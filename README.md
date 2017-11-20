@@ -1,7 +1,7 @@
 # Basic Tensorflow Usage
 ## CUDA
 We need CUDA to run Tensorflow with GPU<br>
-Nvidia CUDA website: https://developer.nvidia.com/cuda-downloads
+Nvidia CUDA website: https://developer.nvidia.com/cuda-downloads<br>
 cudnn library download: https://developer.nvidia.com/cudnn
 ## Anaconda
 ### anaconda install
