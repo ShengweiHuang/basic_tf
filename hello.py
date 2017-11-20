@@ -15,5 +15,8 @@ def basic_cal():
 	sess = tf.Session()
 	print(sess.run(c))
 
+def random_float():
+	
+
 if __name__ == "__main__":
 	main()
