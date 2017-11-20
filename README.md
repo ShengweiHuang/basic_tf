@@ -1,7 +1,11 @@
-# basic_tf
+# Basic Tensorflow Usage
+## CUDA
+We need CUDA to run Tensorflow with GPU<br>
+Nvidia CUDA website: https://developer.nvidia.com/cuda-downloads
+cudnn library download: https://developer.nvidia.com/cudnn
 ## Anaconda
 ### anaconda install
-Anaconda website: https://www.anaconda.com/download/<br>
+Anaconda website: https://www.anaconda.com/<br>
 Download Python 3.6 linux version, and run command.
 ```
 sh ANACONDA_FILE
