@@ -16,7 +16,7 @@ def basic_cal():
 	print(sess.run(c))
 
 def random_float():
-	
+	return
 
 if __name__ == "__main__":
 	main()
