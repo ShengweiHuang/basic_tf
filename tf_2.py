@@ -1,6 +1,5 @@
 import tensorflow as tf
 import numpy as np
-import matplotlib as mpl
 
 # define layer
 def layer_1(inputs, in_size, out_size, activation_function=None):
@@ -36,14 +35,15 @@ def hidden_layer_network():
 	sess = tf.Session()
 	sess.run(init)
 	# using for loop to train
-	for i in range(30000):
+	for i in range(100001):
 		sess.run(train_step, feed_dict={xs:x_data, ys:y_data})
-		if i % 50 == 0:
-			try:
-				print(sess.run(layer1))
-			except Exception:
-				pass
-		prediction_value = sess.run(prediction, feed_dict={xs:x_data})
+		if i % 10000 == 0:
+			# run test every 10000 iteration
+			# create 5 test data x_test
+			x_test = np.linspace(-1, 1, num=5)[:, np.newaxis]
+			# get result
+			prediction_value = sess.run(prediction, feed_dict={xs:x_test})
+			print ("i=", i, "\noutput=", prediction_value, "\ninput=", x_test)
 
 if __name__ == "__main__":
 	hidden_layer_network()
