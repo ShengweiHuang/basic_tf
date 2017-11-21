@@ -35,15 +35,19 @@ def hidden_layer_network():
 	sess = tf.Session()
 	sess.run(init)
 	# using for loop to train
-	for i in range(100001):
+	for i in range(20001):
 		sess.run(train_step, feed_dict={xs:x_data, ys:y_data})
-		if i % 10000 == 0:
-			# run test every 10000 iteration
-			# create 5 test data x_test
-			x_test = np.linspace(-1, 1, num=5)[:, np.newaxis]
-			# get result
-			prediction_value = sess.run(prediction, feed_dict={xs:x_test})
-			print ("i=", i, "\noutput=", prediction_value, "\ninput=", x_test)
+		if i % 1000 == 0:
+			# get loss value
+			loss_val = sess.run(loss, feed_dict={xs:x_data, ys:y_data})
+			print ("i=", i, " loss value=", loss_val)
+			# create test data x_test
+			x_test = np.linspace(-1, 1, num=10)[:, np.newaxis]
+			# get test result and cal real answer
+			y_test = sess.run(prediction, feed_dict={xs:x_test})
+			y_real = np.square(x_test) - 0.5 
+			print ("input=", x_test, "real output=", y_real, "output=", y_test, sep="\n")
+	sess.close()
 
 if __name__ == "__main__":
 	hidden_layer_network()
