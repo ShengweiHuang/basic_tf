@@ -1,13 +1,15 @@
 import tensorflow as tf
 import numpy as np
 
+# use a network to learn linear polynomial
 def easy_network():
 	# create 100 random data, value between 0 to 1
 	x_data = np.random.rand(100).astype(np.float32)
 	# define learning function
 	# weight = 0.1
 	# biases = 0.3
-	y_data = x_data * 0.3 + 0.5
+	# y = x * 0.1 + 0.3
+	y_data = x_data * 0.1 + 0.3
 	# create tensorflow structure
 	# set weights range and init
 	weights = tf.Variable(tf.random_uniform([1], -1.0, 1.0))
@@ -28,10 +30,10 @@ def easy_network():
 	# init session
 	sess.run(init)
 	'''
-	using for loop update weight 201 times
+	using for loop update weight 101 times
 	print weight every 20 times
 	'''
-	for step in range(0, 1001):
+	for step in range(0, 101):
 		sess.run(train)
 		if step % 20 == 0:
 			print(step, sess.run(weights), sess.run(biases))
