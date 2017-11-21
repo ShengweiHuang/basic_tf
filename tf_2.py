@@ -41,6 +41,7 @@ def hidden_layer_network():
 			# get loss value
 			loss_val = sess.run(loss, feed_dict={xs:x_data, ys:y_data})
 			print ("i=", i, " loss value=", loss_val)
+		if i == 20000:
 			# create test data x_test
 			x_test = np.linspace(-1, 1, num=10)[:, np.newaxis]
 			# get test result and cal real answer
