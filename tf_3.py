@@ -20,7 +20,7 @@ def hidden_layer_network():
 	ys = tf.placeholder(tf.float32, [None, 1])
 	# add hidden layer
 	layer1 = layer_1(xs, 1, 5, activation_function=tf.nn.relu)
-	finalLayer = layer_1(layer1, 5, 5, activation_function=tf.nn.relu)
+	finalLayer = layer_1(layer1, 5, 5, activation_function=tf.nn.relu6)
 	# add output layer
 	prediction = layer_1(finalLayer, 5, 1, activation_function=None)
 	# create data and noise
