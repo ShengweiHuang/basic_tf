@@ -13,7 +13,7 @@ def layer_1(inputs, in_size, out_size, activation_function=None):
 		outputs = activation_function(cal_result)
 	return outputs
 
-# define a hidden layer let output = input ^ 2 - 0.5
+# define a hidden layer let output = input ^ 2 - input * 2 + 1
 # and add multiple layer
 def hidden_layer_network():
 	xs = tf.placeholder(tf.float32, [None, 1])
@@ -29,7 +29,7 @@ def hidden_layer_network():
 	x_data = np.linspace(-1, 1, 300)[:, np.newaxis]
 	noise = np.random.normal(0, 0.05, x_data.shape)
 	# create y let network learning and add noise
-	y_data = np.square(x_data) - 0.5 + noise
+	y_data = np.square(x_data) - x_data * 2 + 1 + noise
 	# define loss function and select function that reduce loss
 	loss = tf.reduce_mean(tf.reduce_sum(tf.square(ys - prediction), reduction_indices=[1]))
 	train_step = tf.train.GradientDescentOptimizer(0.1).minimize(loss)
