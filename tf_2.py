@@ -46,7 +46,7 @@ def hidden_layer_network():
 			x_test = np.linspace(-1, 1, num=10)[:, np.newaxis]
 			# get test result and cal real answer
 			y_test = sess.run(prediction, feed_dict={xs:x_test})
-			y_real = np.square(x_test) - 0.5 
+			y_real = np.square(x_test) - x_test * 2 + 1 
 			print ("input=", x_test, "real output=", y_real, "output=", y_test, sep="\n")
 	sess.close()
 
