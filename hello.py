@@ -14,6 +14,10 @@ def basic_cal():
 	print(sess.run(c))
 	sess.close()
 
+def tf_version():
+	print("version=", tf.__version__)
+
 if __name__ == "__main__":
 	hello()
 	basic_cal()
+	tf_version()
