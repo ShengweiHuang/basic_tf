@@ -20,10 +20,9 @@ def hidden_layer_network():
 	ys = tf.placeholder(tf.float32, [None, 1])
 	# add hidden layer
 	layer1 = layer_1(xs, 1, 5, activation_function=tf.nn.relu)
-	layer2 = layer_1(layer1, 5, 5, activation_function=tf.nn.relu)
-	layer3 = layer_1(layer2, 5, 5, activation_function=tf.nn.relu)
+	finalLayer = layer_1(layer1, 5, 5, activation_function=tf.nn.relu)
 	# add output layer
-	prediction = layer_1(layer3, 5, 1, activation_function=None)
+	prediction = layer_1(finalLayer, 5, 1, activation_function=None)
 	# create data and noise
 	# create matrix which row=300 col=1 range=-1~1
 	x_data = np.linspace(-1, 1, 300)[:, np.newaxis]
@@ -49,7 +48,7 @@ def hidden_layer_network():
 			x_test = np.linspace(-1, 1, num=10)[:, np.newaxis]
 			# get test result and cal real answer
 			y_test = sess.run(prediction, feed_dict={xs:x_test})
-			y_real = np.square(x_test) - 0.5 
+			y_real = np.square(x_test) - x_test * 2 + 1
 			print ("input=", x_test, "real output=", y_real, "output=", y_test, sep="\n")
 	sess.close()
 
