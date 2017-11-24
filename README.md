@@ -29,3 +29,9 @@ source deactivate
 ```
 conda install tensorflow-gpu
 ```
+## Display tensorflow data
+### Tensorboard
+Run command, and open url ```YOUR_IP:6006``` to display
+```
+tensorboard --logdir . --host YOUR_IP --inspect tf_NUM.py
+```
