@@ -29,10 +29,14 @@ def hidden_layer_network():
 	y_data = np.square(x_data) - x_data * 2 + 1 + noise
 	# define loss function and select function that reduce loss
 	loss = tf.reduce_mean(tf.reduce_sum(tf.square(ys - prediction), reduction_indices=[1]))
+	tf.summary.histogram("loss", loss)
 	train_step = tf.train.GradientDescentOptimizer(0.1).minimize(loss)
+	# for tensorboard
+	summaries = tf.summary.merge_all()
 	# initialize
 	init = tf.initialize_all_variables()
 	sess = tf.Session()
+	file_writer = tf.summary.FileWriter('./logs', sess.graph)
 	sess.run(init)
 	# using for loop to train
 	for i in range(20001):
@@ -41,6 +45,8 @@ def hidden_layer_network():
 			# get loss value
 			loss_val = sess.run(loss, feed_dict={xs:x_data, ys:y_data})
 			print ("i=", i, " loss value=", loss_val)
+			summ = sess.run(summaries, feed_dict={xs:x_data, ys:y_data})
+			file_writer.add_summary(summ, global_step=i)
 		if i == 20000:
 			# create test data x_test
 			x_test = np.linspace(-1, 1, num=10)[:, np.newaxis]
