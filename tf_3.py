@@ -2,7 +2,7 @@ import tensorflow as tf
 import numpy as np
 
 # define layer
-def layer_1(inputs, in_size, out_size, activation_function=None):
+def new_layer(inputs, in_size, out_size, activation_function=None):
 	weights = tf.Variable(tf.random_normal([in_size, out_size]))
 	biases = tf.Variable(tf.zeros([1, out_size]) + 0.1)
 	cal_result = tf.matmul(inputs, weights) + biases
@@ -19,10 +19,10 @@ def hidden_layer_network():
 	xs = tf.placeholder(tf.float32, [None, 1])
 	ys = tf.placeholder(tf.float32, [None, 1])
 	# add hidden layer
-	layer1 = layer_1(xs, 1, 5, activation_function=tf.nn.relu)
-	finalLayer = layer_1(layer1, 5, 5, activation_function=tf.nn.relu6)
+	layer = new_layer(xs, 1, 5, activation_function=tf.nn.relu)
+	layer = new_layer(layer, 5, 5, activation_function=tf.nn.relu6)
 	# add output layer
-	prediction = layer_1(finalLayer, 5, 1, activation_function=None)
+	prediction = new_layer(layer, 5, 1, activation_function=None)
 	# create data and noise
 	# create matrix which row=300 col=1 range=-1~1
 	x_data = np.linspace(-1, 1, 300)[:, np.newaxis]
