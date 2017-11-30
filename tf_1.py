@@ -36,7 +36,7 @@ def easy_network():
 	for step in range(0, 101):
 		sess.run(train)
 		if step % 20 == 0:
-			print(step, sess.run(weights), sess.run(biases))
+			print(step, "weight: ", sess.run(weights), " bias: "sess.run(biases))
 	sess.close()
 
 if __name__ == "__main__":
